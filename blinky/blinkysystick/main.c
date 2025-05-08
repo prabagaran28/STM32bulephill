@@ -9,7 +9,7 @@ int main()
 periperal_clock_enable(gpiob);
  gpio_config(GPIOB,1,OUTPUT_MAX_50MHX,OUTPUT_PUSH_PULL);
 
---
+
      while(1)
 
      {  

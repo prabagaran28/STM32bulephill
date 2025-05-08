@@ -13,6 +13,7 @@ int main()
  GPIOA->crl &=0x00000000;
    GPIOA->crl |=0x11110000;
    GPIOA->crh &=0x00000000;
+
    GPIOA->crh |= 0x00000111;
     lcd_init4bitmode();
 set_cursor4bitmode(0,2);

@@ -1,18 +1,28 @@
-PREFIX = arm-none-eabi-
-CC = $(PREFIX)gcc
-SIZE=$(PREFIX)size
-CFLAGS = -mcpu=cortex-m3 -mthumb -std=c11 -O1 -g -c 
-LDFLAGS = -nolibc -nostartfiles -T linker.ld -Wl,-Map=blink.map
-all:main.o crt.o  blink.elf
+PREFIX =arm-none-eabi-
+CC =$(PREFIX)gcc 
+SIZE =$(PREFIX)size
+CFLAGS = -mcpu=cortex-m3 -mthumb -std=c11 -g -O1 -c 
+
+PROJECT = final.elf 
+
+SRC += main.c  
+  SRC +=    boot.c 
+  SRC+=init.c
+  SRC+=rcc.c 
+  SRC+=gpio.c
+  SRC+=systick.c
+  SRC+=lcd.c
+OBJ = $(SRC:.c=.o)
+
+$(PROJECT):$(OBJ)
+	$(CC) -nolibc -nostartfiles -nostdlib   $^  -T linker.ld  -o  $@
+	$(SIZE) $@
+
+
 
 %.o:%.c 
-	$(CC) $(CFLAGS) -c $^ -o $@
-blink.elf:main.o crt.o 
-	$(CC) $(LDFLAGS) $^ -o $@
-	$(SIZE) $@
-.PHONY:clean
+	$(CC) $(CFLAGS) $< -o $@ 
+
 clean:
 	rm *.o 
-	rm blink.elf 
-	rm blink.map 
-	
+	rm $(PROJECT)

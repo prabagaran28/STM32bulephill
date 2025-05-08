@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceFolder}",
+            "executable": "./blink.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "device": "STM32F103C8", 
+            "servertype": "openocd",
+            "svdPath": "C:\\Users\\praba\\OneDrive\\Desktop\\youst\\STM32F103.svd",
+            "gdbPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.10\\bin\\arm-none-eabi-gdb.exe",
+            "configFiles": [
+                "interface/stlink-v2.cfg",
+                "target/stm32f1x.cfg"
+            ],
+            "preLaunchCommands": [
+                "monitor reset halt",
+                "monitor program blink.elf verify"
+            ],
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}
