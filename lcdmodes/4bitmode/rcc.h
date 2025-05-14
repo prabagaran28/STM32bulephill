@@ -112,4 +112,13 @@ typedef struct
 #define RCC_APB2ENR_TIM11_EN 21
 #define RCC_APB2ENR_TIM11_EN_MASK (1 << RCC_APB2ENR_TIM11_EN)
 
+typedef enum
+{
+  gpioa,
+  gpiob,
+  gpioc,
+}enable;
+
+void periperal_clock_enable(enable rcc);
+
 #endif

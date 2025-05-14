@@ -1,10 +1,11 @@
 #include "systick.h" 
-void systickInit()
+void systickInit(unsigned short int en)
 {
     SYSTICK->ctrl = 0 ;
-    SYSTICK->load = 0x00ffffff;
+    SYSTICK->load=0x00ffffff;
     SYSTICK->val = 0;
-    SYSTICK->ctrl =SYTICK_ENABLE;
+    SYSTICK->ctrl |=(en << 1);
+    SYSTICK->ctrl |= (1 << 2)|(1 << 0);
 }
 //8421
 //0111

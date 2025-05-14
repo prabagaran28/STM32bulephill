@@ -40,6 +40,6 @@ void gpio_resetpin(gpio_t * port,unsigned short int pin)
 }
 int read_pin(gpio_t * port,unsigned short int pin)
 {
-     port->odr =0;
+    // port->odr =0;
       return ((port->idr >> pin)& 1);
 }

@@ -4,7 +4,7 @@
         {
             "name": "Cortex Debug",
             "cwd": "${workspaceFolder}",
-            "executable": "./blink.elf",
+            "executable": "./final.elf",
             "request": "launch",
             "type": "cortex-debug",
             "runToEntryPoint": "main",
@@ -18,7 +18,7 @@
             ],
             "preLaunchCommands": [
                 "monitor reset halt",
-                "monitor program blink.elf verify"
+                "monitor program final.elf verify"
             ],
             "internalConsoleOptions": "openOnSessionStart"
         }
